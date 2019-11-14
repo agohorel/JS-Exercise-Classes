@@ -154,7 +154,7 @@ class Instructor extends Lambdasian {
   }
 
   updateGrade(student) {
-    student.grade += (Math.random() - 0.5) * 2;
+    student.grade += ((Math.random() - 0.5) * 2);
   }
 }
 
@@ -202,6 +202,7 @@ class Student extends Lambdasian {
     if (this.grade > 0.7) {
       console.log(`Ready to graduate with a grade of ${this.grade}`);
     } else {
+      console.log(`Not ready to graduate, grade is only ${this.grade}`);
       instructor.updateGrade(this);
     }
   }
@@ -244,6 +245,32 @@ class ProjectManager extends Instructor {
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+const student = new Student({
+  name: "alex",
+  age: 27,
+  location: "philly",
+  className: "WEB26",
+  favSubjects: ["node", "javascript", "redux"],
+  grade: .7
+});
+
+const instructor = new Instructor({
+  name: "jane doe",
+  age: 32,
+  location: "australia",
+  specialty: "node.js",
+  favLanguage: "javascript",
+  catchPhrase: "js is bad is a dead meme"
+});
+
+console.log(`Initial grade: ${student.grade}`);
+
+instructor.updateGrade(student);
+
+console.log(`Updated grade: ${student.grade}`);
+
+student.graduate(instructor);
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
